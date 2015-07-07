@@ -23,6 +23,7 @@ module.exports = function (config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
+      'bower_components/angular-strap/dist/angular-strap.js',
       'app/scripts/**/*.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js',
@@ -56,7 +57,7 @@ module.exports = function (config) {
       'app/views/*.html': 'ng-html2js'
     },
     ngHtml2JsPreprocessor: {
-      stripPrefix: 'app/views/'
+      stripPrefix: 'app/'
 //      moduleName: 'product-list'
     },
     // Continuous Integration mode

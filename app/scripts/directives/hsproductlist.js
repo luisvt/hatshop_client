@@ -14,8 +14,8 @@ angular.module('hatshopApp')
 //      link: function (scope, element, attrs) {
 //        element.text('this is the productList directive');
 //      },
-      controller: function ($scope) {
-        $scope.gretting = 'Hello';
+      controller: function ($scope, Product) {
+        $scope.productsPage = Product.query();
       }
     };
   });
