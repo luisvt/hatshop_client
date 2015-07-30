@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc service
- * @name hatshopApp.Product
+ * @name hatshopApp.Page
  * @description
- * # Product
+ * # Page
  * Factory in the hatshopApp.
  */
 angular.module('hatshopApp')
-  .factory('Product', function ($resource) {
-    return $resource('http://localhost:8080/products/', {}, {
+  .factory('Department', function ($resource) {
+    return $resource('http://localhost:8080/departments/:id', {}, {
       query: {isArray: false}
     });
   });

@@ -1,50 +1,23 @@
-/* Space out content a bit */
-body {
-    padding-top: 70px;
-    padding-bottom: 70px;
+/*div[bs-navbar] .active {
+    background-color: #428bca;
 }
 
-.slide-image {
-    width: 100%;
+div[bs-navbar] .active a {
+    color: #fff;
+    background-color: #428bca;
+}*/
+
+md-menu-item.active {
+    color: #fff;
+    background-color: #428bca;
 }
 
-.carousel-holder {
-    margin-bottom: 30px;
+md-menu-item.active a {
+    color: #fff;
 }
 
-.carousel-control,
-.item {
-    border-radius: 4px;
-}
-
-.caption {
-    height: 130px;
+.truncate {
+    text-overflow: ellipsis;
     overflow: hidden;
-}
-
-.caption h4 {
     white-space: nowrap;
-}
-
-.thumbnail img {
-    width: 100%;
-}
-
-.ratings {
-    padding-right: 10px;
-    padding-left: 10px;
-    color: #d17581;
-}
-
-.thumbnail {
-    padding: 0;
-}
-
-.thumbnail .caption-full {
-    padding: 9px;
-    color: #333;
-}
-
-footer {
-    margin: 50px 0;
 }

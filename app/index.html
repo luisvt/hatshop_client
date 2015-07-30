@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" ng-app="hatshopApp">
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -9,112 +9,97 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/angular-motion/dist/angular-motion.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <meta name="viewport" content="initial-scale=1" />
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="hatshopApp">
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" bs-navbar>
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#/">HatShop</a>
-          <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" ng-class="{'in': !navCollapsed}">
-          <ul class="nav navbar-nav">
-            <li data-match-route="^/?$"><a href="#/" ng-click="navCollapsed = true">Home</a></li>
-            <li data-match-route="/about"><a href="#/about" ng-click="navCollapsed = true">About</a></li>
-            <li ng-click="navCollapsed = true">Login</li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!--    <div ng-view=""></div>-->
-
-    <div class="container">
-      <hs-pages>
-        <hs-page route="^/?$">
-          <hs-product-list></hs-product-list>
-        </hs-page>
-        <hs-page route="/about">
-          <h4>World</h4>
-          <em>Mauris elementum elementum enim at suscipit.</em>
-          <p><a href ng-click="i = i + 1">counter: {{i|| 0}}</a></p>
-        </hs-page>
-      </hs-pages>
+  <body layout="column" ng-controller="MainCtrl">
+  <md-toolbar layout="row">
+    <div class="md-toolbar-tools">
+      <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+        <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+      </md-button>
+      <h1><a href="#/">Hatshop</a></h1>
     </div>
-    
-    <!-- Footer -->
-    <footer class="navbar navbar-inverse navbar-fixed-bottom">
-      <div class="container">
-        <div>
-          <div class="navbar-brand">Copyright &copy; Your Website 2014</div>
-        </div>
-      </div>
-    </footer>
+  </md-toolbar>
+  <div layout="row" flex>
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+      <hs-sidebar></hs-sidebar>
+    </md-sidenav>
+    <div layout="column" flex id="content">
+      <md-content layout="column" flex class="md-padding">
+        <hs-pages>
+          <hs-page route="(^/?$)|(^/departments/\d+/products/?$)">
+            <hs-product-list></hs-product-list>
+          </hs-page>
+          <hs-page route="/about">
+            <h4>World</h4>
+            <em>Mauris elementum elementum enim at suscipit.</em>
+            <p><a href ng-click="i = i + 1">counter: {{i|| 0}}</a></p>
+          </hs-page>
+        </hs-pages>
+      </md-content>
+    </div>
+  </div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-    <script>
-      (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-      ga('create', 'UA-XXXXX-X');
-      ga('send', 'pageview');
-    </script>
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+  <script>
+        (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
+        ga('create', 'UA-XXXXX-X');
+        ga('send', 'pageview');
+  </script>
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/json3/lib/json3.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
-    <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+  <!--[if lt IE 9]>
+  <script src="bower_components/es5-shim/es5-shim.js"></script>
+  <script src="bower_components/json3/lib/json3.min.js"></script>
+  <![endif]-->
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/directives/hsproductlist.js"></script>
-    <script src="scripts/directives/hspages.js"></script>
-    <script src="scripts/directives/hspage.js"></script>
-    <script src="scripts/services/product.js"></script>
-    <!-- endbuild -->
-  </body>
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/json3/lib/json3.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/directives/hsproductlist.js"></script>
+  <script src="scripts/directives/hspages.js"></script>
+  <script src="scripts/directives/hspage.js"></script>
+  <script src="scripts/services/product.js"></script>
+  <script src="scripts/directives/hssidebar.js"></script>
+  <script src="scripts/services/department.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <!-- endbuild -->
+</body>
 </html>

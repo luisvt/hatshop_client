@@ -1,0 +1,10 @@
+<!--<div bs-navbar>
+  <ul class="nav nav-sidebar">
+    <li ng-repeat="d in departmentsPage.content" data-match-route="/departments/{{d.id}}"><a ng-href="#/departments/{{d.id}}/products">{{d.name}}</a></li>
+  </ul>
+</div>-->
+<md-menu-content>
+  <md-menu-item ng-repeat="d in departmentsPage.content" match-route="/departments/{{d.id}}">
+    <md-button href="#/departments/{{d.id}}/products">{{d.name}}</md-button>
+  </md-menu-item>
+</md-menu-content>

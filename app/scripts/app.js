@@ -16,7 +16,7 @@ angular.module('hatshopApp', [
   'ngSanitize',
   'ngTouch',
   'mgcrea.ngStrap',
-  'ui.bootstrap'
+  'ngMaterial'
 ]);
 //  .config(function ($routeProvider) {
 //    $routeProvider

@@ -1,32 +1,14 @@
-<div class="container">
-  <div class="row">
-    <div style="height: 305px">
-      <carousel interval="100">
-        <slide ng-repeat="slide in slides" active="slide.active">
-          <img ng-src="{{slide.image}}" style="margin:auto;">
-          <div class="carousel-caption">
-            <h4>Slide {{$index}}</h4>
-            <p>{{slide.text}}</p>
-          </div>
-        </slide>
-      </carousel>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-4" ng-repeat="p in productsPage.content">
-        <div class="thumbnail">
-          <img ng-src="images/product_images/{{p.thumbnail}}" alt="">
-          <div class="caption">
-            <h4 class="pull-right">${{p.price}}</h4>
-            <h4><a href="#">{{p.name}}</a></h4>
-            <p>{{p.description}}</p>
-          </div>
-          <div class="ratings">
-            <p class="pull-right">15 reviews</p>
-            <!--<rating ng-model="3" max="5"></rating>-->
-          </div>
-        </div>
+<div class="row">
+  <md-card ng-repeat="p in productsPage.content" class="col-sm-2">
+    <img ng-src="images/product_images/{{p.thumbnail}}" alt="">
+    <md-card-content>
+      <h4 class="pull-right">${{p.price}}</h4>
+      <h4 class="truncate"><a href="#/products/{{p.id}}">{{p.name}}</a></h4>
+      <p class="truncate">{{p.description}}</p>
+      <div class="ratings">
+        <p class="pull-right">15 reviews</p>
+        <!--<rating ng-model="3" max="5"></rating>-->
       </div>
-    </div>
-  </div>
+    </md-card-content>
+  </md-card>
 </div>

@@ -16,8 +16,21 @@ angular.module('hatshopApp')
 //      link: function (scope, element, attrs) {
 //        element.text('this is the productList directive');
 //      },
-      controller: function ($scope, Product) {
+      controller: function ($scope, $location, $http, Product, Department) {
         $scope.productsPage = Product.query();
+
+        $scope.$watch(function () {
+          return $location.path();
+        }, function (newValue) {
+          if($location.path().match(/\/departments/))
+            $http.get('http://localhost:8080/' + $location.path()).success(function (data, status, headers, config) {
+              $scope.productsPage = data;
+            }).error(function (data, status, headers, config) {
+              console.log('server error', data);
+            });
+          else if($location.path().match(/^\/?$/))
+            $scope.productsPage = Product.query();
+        });
 
         var slides = $scope.slides = [];
         $scope.addSlide = function () {
