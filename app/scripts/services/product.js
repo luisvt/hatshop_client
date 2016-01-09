@@ -9,7 +9,7 @@
  */
 angular.module('hatshopApp')
   .factory('Product', function ($resource) {
-    return $resource('http://localhost:8080/products/', {}, {
+    return $resource('/products/', {}, {
       query: {isArray: false}
     });
   });

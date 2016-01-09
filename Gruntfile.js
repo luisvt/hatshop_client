@@ -18,7 +18,7 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: '../Hatshop/src/main/resources/static'
+    dist: '../hatshop/src/main/resources/static'
 //    dist: 'dist'
   };
 

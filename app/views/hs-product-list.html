@@ -1,14 +1,14 @@
-<div class="row">
-  <md-card ng-repeat="p in productsPage.content" class="col-sm-2">
+<div>
+  <md-list-item ng-repeat="p in productsPage.content">
     <img ng-src="images/product_images/{{p.thumbnail}}" alt="">
     <md-card-content>
       <h4 class="pull-right">${{p.price}}</h4>
-      <h4 class="truncate"><a href="#/products/{{p.id}}">{{p.name}}</a></h4>
-      <p class="truncate">{{p.description}}</p>
+      <h4><a href="#/products/{{p.id}}">{{p.name}}</a></h4>
+      <p>{{p.description}}</p>
       <div class="ratings">
         <p class="pull-right">15 reviews</p>
         <!--<rating ng-model="3" max="5"></rating>-->
       </div>
     </md-card-content>
-  </md-card>
+  </md-list-item>
 </div>

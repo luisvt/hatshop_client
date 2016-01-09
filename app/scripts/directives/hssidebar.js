@@ -7,20 +7,21 @@
  * # hsSidebar
  */
 angular.module('hatshopApp')
-  .directive('hsSidebar', function ($location, $timeout, Department) {
+  .directive('hsSidebar', function ($location, $timeout, Department, DepartmentCategories) {
     return {
       templateUrl: 'views/hs-sidebar.html',
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
-        Department.query().$promise.then(function (departmentsPage) {
-          scope.departmentsPage = departmentsPage;
 
+        function matchRoute() {
           $timeout(function () {
             // Watch for the $location
             scope.$watch(function () {
               return $location.path();
             }, function (newValue) {
-              var menuItems = element[0].querySelectorAll('md-menu-item');
+
+              scope.showCategories = /\/departments/.test(newValue);
+              var menuItems = $('md-menu-item');
               angular.forEach(menuItems, function (menuItem) {
                 var pattern = menuItem.attributes['match-route'].nodeValue;
                 if (scope.strict) {
@@ -36,7 +37,33 @@ angular.module('hatshopApp')
               });
             });
           }, 0);
+        }
+
+        Department.query().$promise.then(function (departments) {
+          scope.departments = departments;
+          matchRoute();
+
+          $timeout(function () {
+            // Watch for the $location
+            scope.$watch(function () {
+              return $location.path();
+            }, function (newValue) {
+              var rx = /\/departments\/(\d+)/;
+              var arr = rx.exec(newValue);
+
+              if(arr === null) return;
+
+              scope.selDeptId = arr[1];
+
+              DepartmentCategories.query({id: scope.selDeptId}).$promise.then(function (categories) {
+                scope.categories = categories;
+                matchRoute();
+              });
+            });
+          }, 0);
         });
+
+
       }
     };
   });

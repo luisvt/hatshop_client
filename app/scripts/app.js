@@ -17,7 +17,11 @@ angular.module('hatshopApp', [
   'ngTouch',
   'mgcrea.ngStrap',
   'ngMaterial'
-]);
+]).config(function ($mdIconProvider) {
+  $mdIconProvider
+      .iconSet('social', 'bower_components/angular-material/demos/icon/demoSvgIconSets/assets/social-icons.svg', 24)
+      .defaultIconSet('bower_components/angular-material/demos/icon/demoSvgIconSets/assets/core-icons.svg', 24);
+});
 //  .config(function ($routeProvider) {
 //    $routeProvider
 //      .when('/', {

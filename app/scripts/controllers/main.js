@@ -8,8 +8,16 @@
  * Controller of the hatshopApp
  */
 angular.module('hatshopApp')
-  .controller('MainCtrl', function ($scope, $mdSidenav) {
-    $scope.toggleSidenav = function(menuId) {
-      $mdSidenav(menuId).toggle();
-    };
-  });
+    .controller('MainCtrl', function ($scope, $mdSidenav, $location, $http) {
+        $scope.toggleSidenav = function (menuId) {
+            $mdSidenav(menuId).toggle();
+        };
+
+        $scope.$watch(function () {
+            return $location.path();
+        }, function (newValue) {
+            $http.get(LOCALHOST + $location.path()).success(function (product) {
+                $scope.product = product;
+            })
+        });
+    });

@@ -26,6 +26,13 @@
         <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
       </md-button>
       <h1><a href="#/">Hatshop</a></h1>
+      <span flex></span>
+      <md-button class="md-icon-button" aria-label="Favorite">
+          <md-icon md-svg-icon="alarm" style="color: greenyellow;"></md-icon>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="More">
+          <md-icon md-svg-icon="bower_components/angular-material/demos/toolbar/demoBasicUsage/img/icons/more_vert.svg"></md-icon>
+      </md-button>
     </div>
   </md-toolbar>
   <div layout="row" flex>
@@ -35,13 +42,14 @@
     <div layout="column" flex id="content">
       <md-content layout="column" flex class="md-padding">
         <hs-pages>
-          <hs-page route="(^/?$)|(^/departments/\d+/products/?$)">
+          <hs-page route="(^/?$)|(^/departments/\d+(/categories/\d+)?/products/?$)">
             <hs-product-list></hs-product-list>
           </hs-page>
-          <hs-page route="/about">
-            <h4>World</h4>
-            <em>Mauris elementum elementum enim at suscipit.</em>
-            <p><a href ng-click="i = i + 1">counter: {{i|| 0}}</a></p>
+          <hs-page route="^/products/\d+$">
+            <h4>{{product.name}}</h4>
+            <img ng-src="images/product_images/{{product.image}}">
+            <p>{{product.description}}</p>
+            <h4>Price: ${{product.price}}</h4>
           </hs-page>
         </hs-pages>
       </md-content>
@@ -84,10 +92,10 @@
   <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-touch/angular-touch.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
-  <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
   <script src="bower_components/angular-aria/angular-aria.js"></script>
   <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+  <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
@@ -100,6 +108,10 @@
   <script src="scripts/directives/hssidebar.js"></script>
   <script src="scripts/services/department.js"></script>
   <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/directives/hsmenutoggle.js"></script>
+  <script src="scripts/directives/hsmenulink.js"></script>
+  <script src="scripts/services/departmentCategories.js"></script>
+  <script src="scripts/directives/hsmatchroute.js"></script>
   <!-- endbuild -->
 </body>
 </html>
