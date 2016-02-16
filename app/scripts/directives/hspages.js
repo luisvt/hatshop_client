@@ -17,31 +17,12 @@ angular.module('hatshopApp')
     scope: {
       strict: '=?'
     },
-    controller: function ($scope, $location) {
+    controller: function ($scope) {
       var pages = $scope.pages = [];
 
       this.addPage = function (page) {
         pages.push(page);
       };
-      
-      // Watch for the $location
-      $scope.$watch(function () {
-        return $location.path();
-      }, function (newValue) {
-        angular.forEach(pages, function (page) {
-          var pattern = page.route;
-          if ($scope.strict) {
-            pattern = '^' + pattern + '$';
-          }
-          var regexp = new RegExp(pattern, 'i');
-
-          if (regexp.test(newValue)) {
-            page.selected = true;
-          } else {
-            page.selected = false;
-          }
-        });
-      });
     }
   };
 });

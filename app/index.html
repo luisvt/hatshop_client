@@ -42,10 +42,10 @@
     <div layout="column" flex id="content">
       <md-content layout="column" flex class="md-padding">
         <hs-pages>
-          <hs-page route="(^/?$)|(^/departments/\d+(/categories/\d+)?/products/?$)">
+          <hs-page hs-match-route="(^/?$)|(^/departments/\d+(/categories/\d+)?/products/?$)">
             <hs-product-list></hs-product-list>
           </hs-page>
-          <hs-page route="^/products/\d+$">
+          <hs-page hs-match-route="^/products/\d+$">
             <h4>{{product.name}}</h4>
             <img ng-src="images/product_images/{{product.image}}">
             <p>{{product.description}}</p>

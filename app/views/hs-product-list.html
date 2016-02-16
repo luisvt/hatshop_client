@@ -1,7 +1,7 @@
 <div>
   <md-list-item ng-repeat="p in productsPage.content">
     <img ng-src="images/product_images/{{p.thumbnail}}" alt="">
-    <md-card-content>
+    <md-card-content class="col-md-12">
       <h4 class="pull-right">${{p.price}}</h4>
       <h4><a href="#/products/{{p.id}}">{{p.name}}</a></h4>
       <p>{{p.description}}</p>

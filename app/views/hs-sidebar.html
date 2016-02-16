@@ -5,15 +5,15 @@
 </div>-->
 <h4>Departments</h4>
 <md-menu-content>
-  <md-menu-item ng-repeat="d in departments" match-route="/departments/{{d.id}}">
+  <md-menu-item ng-repeat="d in departments" hs-match-route="/departments/{{d.id}}">
     <md-button href="#/departments/{{d.id}}/products">{{d.name}}</md-button>
   </md-menu-item>
 </md-menu-content>
 
-<div ng-if="showCategories">
+<div ng-if="categories">
   <h4>Categories</h4>
   <md-menu-content>
-    <md-menu-item ng-repeat="c in categories" match-route="/departments/{{selDeptId}}/categories/{{c.id}}">
+    <md-menu-item ng-repeat="c in categories" hs-match-route="/departments/{{selDeptId}}/categories/{{c.id}}">
       <md-button href="#/departments/{{selDeptId}}/categories/{{c.id}}/products">{{c.name}}</md-button>
     </md-menu-item>
   </md-menu-content>

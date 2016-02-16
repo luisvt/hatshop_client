@@ -16,6 +16,14 @@ md-menu-item.active a {
     color: #fff;
 }
 
+hs-page {
+    display: none;
+}
+
+hs-page.active {
+    display: inherit;
+}
+
 .truncate {
     text-overflow: ellipsis;
     overflow: hidden;

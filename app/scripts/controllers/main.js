@@ -16,7 +16,7 @@ angular.module('hatshopApp')
         $scope.$watch(function () {
             return $location.path();
         }, function (newValue) {
-            $http.get(LOCALHOST + $location.path()).success(function (product) {
+            $http.get($location.path()).success(function (product) {
                 $scope.product = product;
             })
         });
